@@ -1,0 +1,247 @@
+# ===================GENERAL===================
+#
+# 
+
+import = [
+  "./colors/catppuccin-macchiato.toml"
+]
+
+
+
+# =====================ENV=====================
+#
+#
+
+[env]
+TERM = "xterm-256color"
+
+# ===================WINDOW====================
+#
+# В этом разделе описывается таблица [window] файла конфигурации.
+#
+
+[window]
+
+dimensions = { columns = 85, lines = 25}
+    	# dimensions = { columns = <integer>, lines = <integer> }
+
+    	# Количество строк/столбцов (не пикселей) в терминале. 
+	# Чтобы это вступило в силу, и строки, и столбцы должны быть ненулевыми. 
+	# Количество столбцов должно быть не менее 2 , 
+	# а использование значения 0 для столбцов и строк 
+	# приведет к возврату к рекомендованному оконным менеджером размеру.
+	
+	# По умолчанию: { columns = 0 , lines = 0 }
+
+position = "None"	
+	# position = "None" | { x = <integer>, y = <integer> }
+	
+	# Начальное положение окна.
+	# Указывается в количестве пикселей.
+	# Если позиция «None» , размещением будет заниматься оконный менеджер.
+	
+	# По умолчанию: «None»
+
+padding = { x = 10, y = 10 }
+    	# padding = { x = <integer>, y = <integer> }
+	
+	# Пустое пространство добавлено вокруг окна в пикселях. 
+	# Это дополнение масштабируется по DPI, 
+	# и указанное значение всегда добавляется с обеих противоположных сторон.
+	
+	# По умолчанию: { x = 0 , y = 0 }
+
+dynamic_padding = true
+    	# dynamic_padding = true | false
+
+	# Равномерно распределить дополнительные отступы 
+	# вокруг содержимого терминала.
+	
+	# По умолчанию: ложь
+
+decorations = "Full"
+    	# decorations = "Full" | "None" | "Transparent" | "Buttonless"
+
+	# Оконные украшения.
+		# Full:			Границы и строка заголовка.
+		# None:			Ни границ, ни заголовка.
+		# Transparrent			Строка заголовка, прозрачный фон 
+		#   (только для macOS)			и кнопки строки заголовка.
+		# Buttonless 			Строка заголовка, прозрачный фон 
+		#   (только для macOS)			и отсутствие кнопок в строке заголовка.
+		
+	# По умолчанию: Full.
+
+opacity = 0.85
+	# opacity = <float>
+	
+	# Непрозрачность фона в виде числа с плавающей запятой от 0,0 до 1,0.
+	# Значение 0,0 является полностью прозрачным, 
+	# а значение 1,0 — непрозрачным.
+	
+	# По умолчанию: 1,0
+    
+blur = true
+	# blur = true | false
+	
+	# Размыть контент за прозрачными окнами.
+	# (работает на macOS/KDE Wayland)
+	
+	# По умолчанию: false
+
+startup_mode = "Windowed"
+	# startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
+	
+	# Режим запуска (для внесения изменений требуется перезагрузка)
+	
+		# Windowe: 		Обычное окно.
+		# Maximized: 	Окно будет развернуто при запуске.
+		# Fullscreen: 		Окно будет полноэкранным при запуске.
+		# SimpleFullscreen: 	То же, что и полноэкранный режим , 
+		#  (только для macOS)		но вы можете располагать окна сверху.
+	
+	# По умолчанию: «Windowed».
+
+title = "Terminal"
+	# title = "<string>"
+	
+	# Заголовок окна.
+	
+	# По умолчанию: "Alacritty".
+
+dynamic_title = true
+	# dynamic_title = true | false
+	
+	# Разрешить терминальным приложениям изменять заголовок окна Alacritty.
+	
+	# По умолчанию: true
+
+class = { instance = "Alacritty", general = "Alacritty" }
+	# class = { instance = "<string>", general = "<string>" } # (Linux/BSD only)
+	
+	# Класс окна.
+	# В Wayland в качестве app_id используется general, а instance игнорируется.
+	# (только Linux/BSD)
+	
+	# По умолчанию: { instance = "Alacritty", general = "Alacritty" }
+	
+decorations_theme_variant = "None"
+	# decorations_theme_variant = "Dark" | "Light" | "None"
+	
+	# Переопределить вариант системной темы/темы GTK/оформлений на стороне клиента Wayland. 
+	# Установите для этого параметра значение "None", чтобы использовать вариант темы системы по умолчанию.
+	
+	# По умолчанию: "None"
+
+resize_increments = false
+	# resize_increments = true | false
+	
+	# Изменение размера окна дискретными шагами, равными размерам ячейки.
+	
+	# По умолчанию: false
+
+option_as_alt = "None"
+	# option_as_alt = "OnlyLeft" | "OnlyRight" | "Both" | "None"
+	
+	# Переопеделить функции клавиши Option как Alt.
+	# (только для MacOS)
+	
+	# По умолчанию: "None"
+
+
+# ==================SCROLLING==================
+#
+#
+
+#[scrolling]
+
+
+
+# ====================FONT=====================
+#
+#
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 9.0
+
+
+
+# ===================COLORS===================
+#
+#
+
+#[colors]
+
+
+
+# ====================BELL====================
+#
+#
+
+#[bell]
+
+
+
+# ==================SELECTION=================
+#
+#
+
+#[selection]
+
+
+
+# ===================CURSOR===================
+#
+#
+
+#[cursor]
+
+
+
+# TERMINAL
+#
+#
+
+#[terminal]
+
+[shell]
+  program = "tmux"
+
+
+
+# MOUSE
+#
+#
+
+#[mouse]
+
+
+
+# HINTS
+#
+#
+
+#[hints]
+
+
+
+# KEYBOARD
+#
+#
+
+#[keyboard]
+
+
+
+# DEBUG
+#
+#
+
+#[debug]
+
+
+

@@ -1,0 +1,194 @@
+{
+  "layer": "top", // Waybar at top layer
+	"position": "bottom", // Waybar position (top|bottom|left|right)
+	"height": 16, // Waybar height (to be removed for auto height)
+	"width": 1100, // Waybar width
+	"spacing": 0,
+  "margin-bottom": 2,
+
+    "modules-left": [
+      "custom/weather",
+      "cpu",
+      "memory",
+      "network",
+      "custom/term",
+	  	"custom/fm",
+    ],
+
+    "modules-center": [
+      "hyprland/workspaces",
+    ],
+    
+    "modules-right": [
+      "tray",
+      "pulseaudio#volume",
+  		"pulseaudio#microphone",
+      "hyprland/language", 
+      "clock",
+      "custom/power",
+    ],
+
+  "cpu": {
+		"format": "  {usage}%",
+		"tooltip": false
+  },
+
+	"memory": {
+		"format": "  {}%",
+		"tooltip": false
+	},
+
+  "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+	"on-update": "~/.config/hypr/themes/hypr_work/scripts/check_battery.sh",
+    },
+  
+	"custom/weather": {
+		"format": " {} ",
+    "interval": 30,
+		"exec": "~/.config/hypr/themes/hypr_work/scripts/weather.sh",
+		//"exec": "~/.config/hypr/themes/hypr_work/scripts/weather.py",
+    "tooltip": true,
+	},
+  
+  "custom/cmus": {
+	  "format": "{icon} CMUS",
+	  "format-icons": {
+		  "default": [" "]
+		},
+		"max-length": 15,
+		"interval": 1,
+		"exec": "cmus-remote -C \"format_print '%F'\"",
+		"exec-if": "pgrep cmus",
+		"on-click": "cmus-remote -u",
+		"on-scroll-up": "cmus-remote --next",
+		"on-scroll-down": "cmus-remote --prev",
+		"escape": true,
+		"tooltip": false
+	},
+
+  "custom/rec": {
+		"format": " ",
+		"on-click": "kooha",
+		"tooltip": false
+	},
+
+	"custom/print": {
+		"format": " ",
+		"on-click": "exec ~/.config/hypr/themes/hypr_work/scripts/screen.sh",
+		"tooltip": false
+	},
+
+	"custom/term": {
+		"format": " ",
+		"on-click": "exec kitty",
+		"tooltip": false
+	},
+
+	"custom/fm": {
+		"format": " ",
+		"on-click": "exec thunar",
+		"tooltip": false
+	},
+
+  "hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"1": "一",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"6": "六",
+			"7": "七",
+			"8": "八",
+			"urgent": "",
+			"default": ""
+		},
+    "tooltip": false,
+    "all": true,
+		"sort-by-number": true
+	},
+	
+  "tray": {
+		"icon-size": 15,
+		"spacing": 15,
+    "tooltip": false,
+  },
+  
+  "pulseaudio#volume": {
+		"scroll-step": 1,
+		"format": "{icon} {volume}%",
+		"format-bluetooth": " {icon} {volume}%",
+		"format-muted": "  0%",
+		"tooltip-format": "{desc}",
+		"format-icons": {
+			"headphone": " ",
+			"default": [
+				"",
+				" ",
+				" "
+			]
+		},
+		"on-click": "pavucontrol",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"tooltip": false
+	},
+
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		"format-source": " {volume}%",
+		"format-source-muted": "  0%",
+		"on-click": "pavucontrol",
+		"on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+		"on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 10%+ -l 1.0",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 10%- -l 1.0",
+		"tooltip": false
+	},
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "  {signalStrength}%", // Icon: wifi
+    "format-ethernet": " 󰈀 ", // Icon: ethernet
+    "format-disconnected": "⚠",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "on-click": "nm-connection-editor",
+  },
+  "network#vpn": {
+    "interface": "tun0",
+    "format": "  {essid} ({signalStrength}%)",
+    "format-disconnected": "⚠  Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+  },
+	
+  "hyprland/language": {
+		"format": "{}",
+		"format-en": "EN",
+		"format-ru": "RU",
+    "on-scroll-up": "hyprctl switchxkblayout all next",
+		"on-scroll-down": "hyprctl switchxkblayout all prev",
+	},
+
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format": "{:%H:%M}",
+		"format-alt": "{:%Y-%m-%d}",
+		"tooltip": false
+	},
+
+  "custom/power": {
+		"format" : "⏻",
+		"tooltip": false,
+		"on-click": "wlogout"
+		}
+	}
+}
